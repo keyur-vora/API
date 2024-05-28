@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLACE API</title>
+</head>
+
+<body>
+
+    <div id="images"></div>
+    <h1 id="name"></h1>
+    <button id="read" style="cursor: pointer;">Click Here</button>
+
+    <script>
+        let data = [
+            {
+                "id": 1,
+                "place": "Kedarnath",
+                "imdb_url": "https://upload.wikimedia.org/wikipedia/commons/5/56/Kedarnath_Temple_in_Rainy_season.jpg"
+            },
+            {
+                "id": 2,
+                "place": "Kashmir",
+                "imdb_url": "https://www.khyberhotels.com/blog/wp-content/uploads/2023/10/winter-kashmir.jpg"
+            },
+            {
+                "id": 3,
+                "place": "Himalaya",
+                "imdb_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Manali_Mountains.jpg/1200px-Manali_Mountains.jpg"
+            }
+        ]
+
+        function generate() {
+            localStorage.setItem("object", JSON.stringify(data));
+            var object = localStorage.getItem('object');
+            var objectdata = JSON.parse(object);
+
+            let index = Math.floor(Math.random() * objectdata.length);
+            document.getElementById("images").innerHTML = `<img src="${objectdata[index].imdb_url}" alt="${objectdata[index].place}">`;
+            document.getElementById("name").innerHTML = objectdata[index].place;
+
+        }
+        window.onload = function () {
+            document.getElementById("read").addEventListener('click', generate);
+        }
+    </script>
+
+</body>
+
+</html>

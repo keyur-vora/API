@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORONA API</title>
+</head>
+
+<body>
+
+    <div id="images"></div>
+    <h1 id="name"></h1>
+    <button id="read" style="cursor: pointer;">Click Here</button>
+
+    <script>
+        let data = [
+            {
+                "id": 1,
+                "virus": "Corona virus",
+                "imdb_url": "https://images.pexels.com/photos/3993212/pexels-photo-3993212.jpeg?auto=compress&cs=tinysrgb&w=400"
+            },
+            {
+                "id": 2,
+                "virus": "Corona virus",
+                "imdb_url": "https://img.freepik.com/premium-photo/coronavirus-quarantine-covid-19-pandemic-concept-sad-sick-woman-corona-virus-looking-through-window_230311-18287.jpg?w=1380"
+            },
+            {
+                "id": 3,
+                "virus": "Corona virus",
+                "imdb_url": "https://img.freepik.com/free-vector/stop-coronavirus-let-s-fight-together_23-2148493342.jpg?t=st=1716876814~exp=1716880414~hmac=b2c276d7169b1d793d11fc0c0a9bb07339c3489048984f08ac462bef0b255a3f&w=1380"
+            },
+            {
+                "id": 4,
+                "virus": "Corona virus",
+                "imdb_url": "https://www.freepik.com/free-photo/close-up-doctor-coronavirus_11380380.htm#fromView=search&page=1&position=4&uuid=08ebeee6-955a-4b2a-a17c-b0e5d0e2995b"
+            }
+        ]
+
+        function generate() {
+            localStorage.setItem("object", JSON.stringify(data));
+            var object = localStorage.getItem('object');
+            var objectdata = JSON.parse(object);
+
+            let index = Math.floor(Math.random() * objectdata.length);
+            document.getElementById("images").innerHTML = `<img src="${objectdata[index].imdb_url}" alt="${objectdata[index].virus}">`;
+            document.getElementById("name").innerHTML = objectdata[index].virus;
+
+        }
+        window.onload = function () {
+            document.getElementById("read").addEventListener('click', generate);
+        }
+    </script>
+
+</body>
+
+</html>

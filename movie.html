@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOVIE API</title>
+</head>
+
+<body>
+
+    <div id="images"></div>
+    <h1 id="name"></h1>
+    <button id="read" style="cursor: pointer;">Click Here</button>
+
+    <script>
+        let data = [
+            {
+                "id": 1,
+                "movie": "Pushpa",
+                "imdb_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAsSgLnuytb0j9nLaBYaYWFXTRk5NhlCfInQ&s"
+                
+            },
+            {
+                "id": 2,
+                "movie": "Salaar",
+                "imdb_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSaoslPeetiYMgrdaykN3E61ddTOd28OK2g&s"
+            },
+            {
+                "id": 3,
+                "movie": "Animal",
+                "imdb_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHzE6ZF8CdzuiVNesQ-DNfWy7ziuvyFfXTZA&s"
+            },
+            {
+                "id": 4,
+                "movie": "K.G.F 2",
+                "imdb_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-lUFv1lw7NQVFYcry3rTntIsfGpVX1sJWcw&s"
+            },
+            {
+                "id": 5,
+                "movie": "Bloody Daddy",
+                "imdb_url": "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202304/bloody_daddy_poster-one_one.jpg?VersionId=bewciw4Met.0tdzpPweukc8ufWD.KSwO"
+            },
+            
+        ]
+
+        function generate() {
+            localStorage.setItem("object", JSON.stringify(data));
+            var object = localStorage.getItem('object');
+            var objectdata = JSON.parse(object);
+
+            let index = Math.floor(Math.random() * objectdata.length);
+            document.getElementById("images").innerHTML = `<img src="${objectdata[index].imdb_url}" alt="${objectdata[index].movie}">`;
+            document.getElementById("name").innerHTML = objectdata[index].movie;
+
+        }
+        window.onload = function () {
+            document.getElementById("read").addEventListener('click', generate);
+        }
+    </script>
+
+</body>
+
+</html>
